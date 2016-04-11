@@ -1,5 +1,6 @@
 package ua.controller;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,29 +12,29 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.entity.Buyer;
+import com.entity.User;
+import com.service.UserService;
 
-import service.BuyerService;
 
 @Controller
 public class IndexController {
 
-	private List<Buyer> list = new ArrayList<Buyer>();
+	private List<User> list = new ArrayList<User>();
 	@Autowired
-	private BuyerService buyer;
-	private String firstName;
+	private UserService user;
+	
 
-	@RequestMapping("/buyer")
+	@RequestMapping("/user")
 	public String indexView(Model model) {
-		buyer.toString();
-		model.addAttribute("buyers", list);
+		user.toString();
+		model.addAttribute("users", list);
 		return "index";
 	}
 
-	@RequestMapping(value = "/buyer", method = RequestMethod.POST)
-	public String indexPost(@RequestParam(value="id") int id,
-			@RequestParam String name) {
-		list.add(new Buyer(id, firstName));
+	@RequestMapping(value = "/", method = RequestMethod.POST)
+	public String indexPost(@RequestParam(value="username") int id,
+			@RequestParam String username) {
+		list.add(new User(id, username));
 		return "redirect:/";
 	}
 	

@@ -11,26 +11,37 @@
 <title>Registration</title>
 </head>
 <body>
-	<h2></h2>
+	<h2>Registration</h2>
 	<form method="post">
 	<table>
-
+		
 		<tr>
-			<th>FirstName:</th>
+			<th>FirstName</th>
 			<td><input name="firstName" type="text"/></td>
 		</tr>
 
-<tr>
-			<th>Id:</th>
-			<td><input name= "id" type="value"/></td>
-			</tr>
-
-
-
-
+		<tr>
+			<th>E-mail:</th>
+			<td><input name="email" type="text"/></td>
+		</tr>
+		 
+		<tr>
+			<th>Username:</th>
+			<td><input name="username" type="text"/></td>			
+		</tr>
+		 		  	
+		<tr>
+			<th>Password:</th>
+			<td><input name="password" type="text"/></td>
+		</tr>
+		
+		<tr>
+			<th>Age</th>
+			<td><input name="age" type="text"/></td>
+		</tr>
 		<tr>
 			<th></th>
-			<td><input type="submit" value=""/></td>
+			<td><input type="submit" value="Authorisation"/></td>
 		</tr>
 	</table>
 	</form>
@@ -38,20 +49,25 @@
 	<c:if test="${persons.size() ne 0}">
 		<c:forEach begin="0" end="${persons.size()-1}" var="index">
 			<tr>
-				<td>FirstName: </td>
+				<td>Username </td>
 				<td>${persons.get(index).firstName}</td>
 				<td>;</td>
-
-				<td>Id:</td>
-                <td>${persons.get(index).id}</td>
-                				<td>;</td>
-
-
-
-
-
+				<td>E-mail:</td>
+				<td>${persons.get(index).email}</td>
+				<td>;</td>
+				
+				<td>Username: </td>
+				<td>${persons.get(index).username}</td>
+				<td>;</td>
+				
+				<td>Password: </td>
+				<td>${persons.get(index).password}</td>
+				<td>;</td>
+				<td>Age: </td>
+				<td>${persons.get(index).getAge()}</td>
+				<td>;</td>
 				<c:url value="/" var="url"/>
-				<td><a href="${url}${index}"></a></td>
+				<td><a href="${url}${index}">delete</a></td>
 			</tr>
 		</c:forEach>
 	</c:if>
@@ -59,26 +75,27 @@
 			<p>Nothing</p>
 		</c:if>
 	</table>
-
-	<!--
-	<div>
+		
+	<!--  
+	<div> 
 		<h2>Create a free Spitter account</h2>
-		<sf:form method="POST" modelAttribute="spitter"       enctype="multipart/form-data">
-		<fieldset>
+		<sf:form method="POST" modelAttribute="user"       
+		enctype="multipart/form-data">
+		<fieldset>  
 		<table cellspacing="0">
-			<tr>
-				<th><sf:label path="buyer">User:</sf:label></th>
+			<tr>      
+				<th><sf:label path="user">User:</sf:label></th>
 					<td>
-						<sf:input path="buyer" size="15" maxlength="15" />
-				  		<small id="buyer_msg">No spaces, please.</small><br/>
-				  		<sf:errors path="buyer" cssClass="error" />
-				  	</td>
+						<sf:input path="user" size="15" maxlength="15" /> 
+				  		<small id="user_msg">No spaces, please.</small><br/>         
+				  		<sf:errors path="user" cssClass="error" />      
+				  	</td>                               
 			</tr>
-		</table>
-		</fieldset>
-		</sf:form>
+		</table> 
+		</fieldset> 
+		</sf:form> 
 	</div>
-	-->
-
+	-->	
+	
 </body>
 </html>
